@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="content mt-3">
+        <div class="col-sm-12">
+            <h3>{{ task.name }}</h3>
+            <br>
+            <img alt="{{ task.name }}" src="{{ task.image.url }}">
+            <br>
+            <br>
+            <div class="form-switch">
+                <p style="color: #0d152a">Описание: {{ task.text }}</p>
+            </div>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <table>
+                    {% for field in form %}
+                        {% if field.name != 'images' %}
+                            <td>
+                            <td>
+                                <div class="form-switch">
+                                    <label class="form-label">{{ field.label }}</label>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-switch">
+                                    {{ field }}
+                                </div>
+                            </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+                <table>
+                    <tr>
+                        <td>
+                            <div class="form-check">
+                                {{ form.images }}
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-check">
+                                <button type="submit" class="btn btn-primary">Отправить</button>
+                            </div>
+                        </td>
+                    </tr>
+
+                </table>
+
+                <br>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    {% load static %}
+    <div class="content mt-3">
+
+        <div class="col-sm-12">
+            <img src="{% static 'images/not_ready.png' %}">
+        </div>
+        <div class="col-sm-12">
+            <h1 style="text-align: center">{{ request.user.name }} Не допущен к работе</h1>
+        </div>
+    </div>
+{% endblock %}
